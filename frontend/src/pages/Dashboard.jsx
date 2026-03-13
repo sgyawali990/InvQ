@@ -1,28 +1,45 @@
-import React, { useEffect, useState } from 'react';
-import api from '../services/api';
+import { useEffect, useState } from "react";
+import InventoryTable from "../components/inventory/InventoryTable";
+import AlertsPanel from "../components/Alerts/AlertsPanel";
 
-export default function Dashboard() {
-  const [items, setItems] = useState([]);
+export default function Dashboard(){
 
-  useEffect(() => {
-    api
-      .get('/inventory')
-      .then((res) => setItems(res.data))
-      .catch(console.error);
-  }, []);
+  const [inventory,setInventory] = useState([]);
 
-  return (
-    <div className="page-container">
-      <h1>Inventory Dashboard</h1>
-      {items.length === 0 ? (
-        <p>No items yet.</p>
-      ) : (
-        items.map((item) => (
-          <div key={item._id} className="inventory-item">
-            <strong>{item.name}</strong>: {item.quantity}
-          </div>
-        ))
-      )}
+  useEffect(()=>{
+
+    const fetchInventory = async ()=>{
+      const token = localStorage.getItem("invq_token");
+
+      const res = await fetch("/api/inventory",{
+        headers:{
+          Authorization:`Bearer ${token}`
+        }
+      });
+
+      const data = await res.json();
+      setInventory(data);
+    };
+
+    fetchInventory();
+
+  },[]);
+
+  return(
+    <div className="dashboard">
+
+      <div className="inventory-section">
+        <h2>Inventory</h2>
+        <InventoryTable
+          inventory={inventory}
+          setInventory={setInventory}
+        />
+      </div>
+
+      <div className="alerts-section">
+        <AlertsPanel inventory={inventory}/>
+      </div>
+
     </div>
   );
 }

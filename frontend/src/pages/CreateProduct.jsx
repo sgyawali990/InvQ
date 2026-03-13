@@ -1,40 +1,49 @@
-import React, { useState } from 'react';
-import api from '../services/api';
+import { useState } from "react";
 
-export default function CreateProduct() {
-  const [name, setName] = useState('');
-  const [quantity, setQuantity] = useState(0);
+export default function CreateProduct(){
 
-  const handleCreate = async (e) => {
-    e.preventDefault();
-    try {
-      // TODO: implement real API call when backend POST route exists
-      alert('Product creation logic pending.');
-    } catch {
-      alert('Could not create product.');
-    }
+  const [name,setName] = useState("");
+  const [quantity,setQuantity] = useState(0);
+
+  const handleCreate = async ()=>{
+
+    const token = localStorage.getItem("invq_token");
+
+    await fetch("/api/inventory",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        Authorization:`Bearer ${token}`
+      },
+      body: JSON.stringify({name,quantity})
+    });
+
+    alert("Product created");
+    setName("");
+    setQuantity(0);
   };
 
-  return (
-    <div className="page-container">
-      <h1>Create Product</h1>
-      <form onSubmit={handleCreate}>
-        <input
-          type="text"
-          placeholder="Product name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <input
-          type="number"
-          placeholder="Quantity"
-          value={quantity}
-          onChange={(e) => setQuantity(e.target.value)}
-          required
-        />
-        <button type="submit">Create</button>
-      </form>
+  return(
+    <div>
+      <h2>Create Product</h2>
+
+      <input
+        placeholder="Product Name"
+        value={name}
+        onChange={(e)=>setName(e.target.value)}
+      />
+
+      <input
+        type="number"
+        placeholder="Quantity"
+        value={quantity}
+        onChange={(e)=>setQuantity(e.target.value)}
+      />
+
+      <button onClick={handleCreate}>
+        Create
+      </button>
+
     </div>
   );
 }
