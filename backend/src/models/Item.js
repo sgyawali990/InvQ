@@ -25,7 +25,10 @@ const itemSchema = new mongoose.Schema(
         date: { type: Date, default: Date.now }
       }
     ],
-
+    expirationDate: {
+        type: Date,
+        required: false
+    },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',

@@ -9,11 +9,13 @@ const getAdminEmails = async () => {
   return admins.map(u => u.email).join(", ");
 };
 
-const validateItemInput = ({ itemName, quantity, reorderThreshold }) => {
+const validateItemInput = ({ itemName, quantity, reorderThreshold, expirationDate }) => {
   if (!itemName || typeof itemName !== 'string' || itemName.trim() === '') {
     return 'itemName is required and must be a non-empty string';
   }
-
+ if (expirationDate && isNaN(Date.parse(expirationDate))) {
+  return 'expirationDate must be a valid date';
+}
   if (quantity === undefined || quantity === null || isNaN(quantity) || Number(quantity) < 0) {
     return 'quantity is required and must be a number greater than or equal to 0';
   }
@@ -74,19 +76,20 @@ const checkAndNotify = async (item) => {
 
 const createItem = async (req, res) => {
   try {
-    const { itemName, quantity, reorderThreshold } = req.body;
+    const { itemName, quantity, reorderThreshold, expirationDate } = req.body;
 
     const validationError = validateItemInput({ itemName, quantity, reorderThreshold });
     if (validationError) {
       return res.status(400).json({ message: validationError });
     }
 
-    const item = await Item.create({
-      itemName: itemName.trim(),
-      quantity: Number(quantity),
-      reorderThreshold: Number(reorderThreshold),
-      user: req.user.id
-    });
+  const item = await Item.create({
+  itemName: itemName.trim(),
+  quantity: Number(quantity),
+  reorderThreshold: Number(reorderThreshold),
+  expirationDate: expirationDate ? new Date(expirationDate) : null,
+  user: req.user.id
+});
 
     await checkAndNotify(item);
 
