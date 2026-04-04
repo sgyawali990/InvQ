@@ -243,6 +243,7 @@ button {
   -webkit-appearance: none;
   margin: 0;
 }
+<<<<<<< HEAD
 .card {
   flex: 1;
   background: white;
@@ -261,4 +262,42 @@ button {
   margin: 8px 0 0;
   font-size: 22px;
   font-weight: bold;
+=======
+
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .table-container, 
+  .table-container * {
+    visibility: visible;
+  }
+
+  .table-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none !important;
+  }
+
+  button, 
+  .table-container button,
+  th:last-child, 
+  td:last-child {
+    display: none !important;
+  }
+
+  table {
+    border: 1px solid #eee !important;
+  }
+>>>>>>> 6d2b27616d007e0a0238a2918d06a21390bcb6f6
 }

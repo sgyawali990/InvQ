@@ -132,6 +132,7 @@ return (
           </span>
         </p>
       </div>
+<<<<<<< HEAD
 
       <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
         <button
@@ -167,6 +168,21 @@ return (
         >
           Sync All Changes
         </button>
+=======
+      
+      <div className="inventory-section">
+        <InventoryTable
+          inventory={inventory}
+          setInventory={setInventory}
+          mode={mode}
+          pendingChanges={pendingChanges}
+          setPendingChanges={setPendingChanges}
+        />
+      </div>
+
+      <div className="alerts-section">
+        <AlertsPanel inventory={inventory} />
+>>>>>>> 6d2b27616d007e0a0238a2918d06a21390bcb6f6
       </div>
     </div>
 
