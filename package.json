@@ -7,13 +7,17 @@
     "start": "node backend/src/server.js"
   },
   "devDependencies": {
-    "concurrently": "^8.2.0"
+    "autoprefixer": "^10.4.27",
+    "concurrently": "^8.2.0",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^4.2.2"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
-    "mongodb": "^7.1.0",
+    "lucide-react": "^1.7.0",
+    "mongodb": "^7.1.1",
     "mongoose": "^9.3.1",
     "nodemailer": "^8.0.3"
   }
