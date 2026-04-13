@@ -1,128 +1,60 @@
+```
+## Project Summary
+
+InvQ is a full-stack inventory management web application designed to help small businesses and solo operators track stock levels, identify low inventory, and make smarter restocking decisions.
+
+The system provides a centralized dashboard where users can manage their inventory in real time, edit quantities directly, and receive alerts when items fall below defined thresholds. The goal is to simplify inventory tracking while giving users clear, actionable insights into what needs attention.
+
+The application is built using a modern web stack:
+- Frontend: React (Vite)
+- Backend: Node.js with Express
+- Database: MongoDB
+
+Core functionality includes:
+- Secure user authentication using JWT
+- Fully interactive inventory system (add, edit, delete items)
+- Inline editing with immediate UI updates
+- Automated low-stock and out-of-stock alert detection
+- Alerts panel with manual refresh for up-to-date stock status
+- Clean, SaaS-style user interface for ease of use
+
+InvQ focuses on delivering a simple, responsive, and practical solution for inventory management, with a strong foundation for future enhancements such as real-time updates, automation, and full deployment to cloud infrastructure.
+```
+
 ## Team Roles
 
-### Kavya — Backend Developer
-**Responsibilities**
-- Designs database schema and API structure
-- Implements core backend logic, including CRUD, authentication, alerts, email, and Stripe
-- Supports deployment planning, scalability, and performance
-
-**Current Status**
-- Backend folder structure created
-- Initial models added: `User.js`, `Item.js`, `Alert.js`
-- Initial controllers added: auth, inventory, alerts
-- Initial routes added: auth, inventory, alerts
-- Middleware and utility files started
-- Database config, app setup, and server setup added
-
-**Still To Do**
-- Finish working auth flow with JWT
-- Complete full CRUD logic and validation
-- Connect email alerts
-- Implement Stripe subscription logic
-- Finalize database behavior and testing
+Kavya → Backend Developer  
+- Built backend architecture (Express server, routing, middleware)  
+- Implemented database models (User, Item, Alert)  
+- Developed core API endpoints (/auth, /inventory, /alerts)  
+- Integrated JWT-based authentication  
+- Established inventory and alert backend logic  
 
 
-### Caroline — Frontend Developer
-**Responsibilities**
-- Builds the user interface, including dashboard, forms, and alert indicators
-- Integrates frontend with backend APIs
-- Applies responsive design and client-side validation
-- Builds login/signup, password reset, Stripe, and vendor cart handoff pages
-
-**Current Status**
-- Frontend folder structure created
-- Pages added: `Dashboard.jsx`, `Login.jsx`, `RegisterUser.jsx`, `CreateProduct.jsx`, `CreateStore.jsx`, `Settings.jsx`, `signup.jsx`
-- API service file added: `api.js`
-- Base app entry files present
-
-**Still To Do**
-- Finish UI design and page logic
-- Connect pages to backend API
-- Add validation and error handling
-- Build reusable components
-- Improve responsiveness and polish
+Caroline → Frontend Developer  
+- Developed full UI system (Dashboard, Inventory, Alerts, Settings)  
+- Integrated frontend with backend APIs  
+- Built interactive inventory table (inline editing, add/delete items)  
+- Implemented alerts panel UI  
+- Structured overall layout and navigation  
 
 
-### Kaitlyn — UX Designer & QA Analyst
-**Responsibilities**
-- Designs wireframes, workflows, and icon mappings
-- Ensures a clean UX for manual and end-of-day flows
-- Maintains style guide and visual feedback consistency
-- Tests usability and edge cases, including auth and payments
-
-**Current Status**
-- Role assigned
-- UX and QA responsibilities defined
-
-**Still To Do**
-- Create wireframes and user flows
-- Define style guide and design consistency
-- Review usability of inventory flows
-- Build QA checklist and test edge cases
+Kaitlyn → UX Designer & QA Analyst  
+- Contributed to UI/UX direction and overall design structure  
+- Supported usability of core flows (inventory, alerts, auth)  
+- Assisted in identifying areas for UX improvement and testing needs  
 
 
-### Ben — DevOps & Infrastructure / Payments Engineer
-**Responsibilities**
-- Handles deployment pipeline and environment setup
-- Manages email/SMTP configuration
-- Implements Stripe payment and free-trial enforcement
-- Supports alert scheduling and background jobs
-
-**Current Status**
-- Role assigned
-- Infra folder present for future deployment setup
-
-**Still To Do**
-- Set up deployment pipeline
-- Configure environment variables securely
-- Implement Stripe billing flow
-- Set up SMTP/email configuration
-- Plan alert scheduling workflow
+Ben → DevOps & Infrastructure Engineer  
+- Supported local development and environment setup  
+- Prepared groundwork for deployment and infrastructure  
+- Assisted with backend environment configuration  
 
 
-### Sirjan — Feature Logic & Systems Engineer
-**Responsibilities**
-- Engineers business templates and usage modes
-- Implements onboarding flows, feature toggles, and threshold logic
-- Develops reorder logic and shared system behavior
-- Coordinates logic consistency across backend, frontend, and QA
-
-**Current Status**
-- Role assigned
-- Core feature responsibilities defined
-
-**Still To Do**
-- Design business template system
-- Implement manual vs end-of-day inventory logic
-- Add threshold and reorder decision logic
-- Support onboarding and feature toggle planning
-
-
-
-## Current Project Progress
-
-### Completed So Far
-- Repository structure created
-- Backend and frontend directories organized
-- Initial backend files for models, controllers, routes, middleware, config, and utilities added
-- Initial frontend pages and API service file added
-- README started with project overview and tech stack
-- Team roles identified
-
-### In Progress
-- Refining project documentation
-- Building backend logic for authentication, inventory, and alerts
-- Building frontend pages for dashboard and user flows
-- Organizing responsibilities across the team
-
-### Not Yet Completed
-- Full JWT authentication flow
-- Password reset by email
-- Complete inventory CRUD with validations
-- Low-stock detection and alert delivery
-- Business templates
-- Manual and end-of-day inventory modes
-- Reorder assistance and export features
-- Vendor cart handoff
-- Stripe subscriptions and trial handling
-- Full testing and deployment
+Sirjan → Systems Engineer & Scrum Lead  
+- Designed and implemented core inventory logic (thresholds, alerts)  
+- Fixed authentication flow and frontend-backend integration issues  
+- Developed full inventory functionality (real-time editing, state sync)  
+- Integrated alert system with inventory logic  
+- Simplified user model and cleaned database inconsistencies  
+- Coordinated team direction, task assignment, and development priorities  
