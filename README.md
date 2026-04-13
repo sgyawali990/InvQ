@@ -1,4 +1,3 @@
-```
 ## Project Summary
 
 InvQ is a full-stack inventory management web application designed to help small businesses and solo operators track stock levels, identify low inventory, and make smarter restocking decisions.
@@ -19,7 +18,8 @@ Core functionality includes:
 - Clean, SaaS-style user interface for ease of use
 
 InvQ focuses on delivering a simple, responsive, and practical solution for inventory management, with a strong foundation for future enhancements such as real-time updates, automation, and full deployment to cloud infrastructure.
-```
+
+
 
 ## Team Roles
 
