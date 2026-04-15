@@ -1,12 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
-  useLocation,
-} from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 import Login from "./pages/Login";
 import RegisterUser from "./pages/RegisterUser";
@@ -16,8 +10,6 @@ import CreateProduct from "./pages/CreateProduct";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import AlertsPanel from "./components/Alerts/AlertsPanel";
-
-// Casing changed from layout to Layout
 import Layout from "./components/Layout"; 
 
 import "./index.css";
@@ -36,14 +28,16 @@ const ProtectedRoute = ({ children }) => {
 
 const App = () => {
   return (
-    <BrowserRouter>
+    /* HashRouter does not need a 'basename' prop like BrowserRouter does */
+    <HashRouter>
       <Routes>
-        
+        {/* Public Routes */}
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<RegisterUser />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
 
+        {/* Protected Dashboard Route */}
         <Route
           path="/dashboard"
           element={
@@ -53,6 +47,7 @@ const App = () => {
           }
         />
         
+        {/* Protected Inventory Route */}
         <Route
           path="/inventory"
           element={
@@ -62,6 +57,7 @@ const App = () => {
           }
         />
 
+        {/* Protected Settings Route */}
         <Route
           path="/settings"
           element={
@@ -71,7 +67,7 @@ const App = () => {
           }
         />
 
-
+        {/* Protected Alerts Route */}
         <Route
           path="/alerts"
           element={
@@ -81,10 +77,15 @@ const App = () => {
           }
         />
 
+        {/* Catch-all Redirect */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App /> 
+  </React.StrictMode>
+);

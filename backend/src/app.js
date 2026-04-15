@@ -13,15 +13,9 @@ const app = express();
 // Middleware
 app.use(helmet());
 app.use(cors({ 
-    origin: function(origin, callback) {
-        if (!origin || origin.includes('localhost') || /^https?:\/\/10\.\d+\.\d+\.\d+/.test(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
+    origin: ["http://localhost:5173", "https://sgyawali990.github.io"],
     credentials: true 
-})); 
+}));
 app.use(express.json());
 
 // Health Check
