@@ -23,7 +23,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`http://${import.meta.env.VITE_API_URL}/inventory`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/inventory`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         const data = await res.json();

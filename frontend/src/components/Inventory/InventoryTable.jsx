@@ -165,7 +165,7 @@ export default function InventoryTable({
     if (!hasName || !hasQty || !hasThreshold) return false;
 
     try {
-      const res = await fetch(`http://${import.meta.env.VITE_API_URL}/inventory`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/inventory`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -225,7 +225,7 @@ export default function InventoryTable({
       await createServerItemIfReady(draftedItem);
     } else {
       try {
-        const res = await fetch(`http://${import.meta.env.VITE_API_URL}/inventory/${itemId}`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/inventory/${itemId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -347,7 +347,7 @@ export default function InventoryTable({
     replaceItemLocal(item._id, (prev) => ({ ...prev, quantity: newQty }));
 
     try {
-      const res = await fetch(`http://${import.meta.env.VITE_API_URL}/inventory/${item._id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/inventory/${item._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -384,7 +384,7 @@ export default function InventoryTable({
 
     // Handle saved items (Server + Local)
     try {
-      const res = await fetch(`http://${import.meta.env.VITE_API_URL}/inventory/${item._id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/inventory/${item._id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` }
       });
