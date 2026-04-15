@@ -23,7 +23,7 @@ jobs:
           node-version: lts/*
 
       - name: Install dependencies
-        run: cd frontend && npm ci
+        run: cd frontend && npm install
 
       - name: Build
         run: cd frontend && npm run build
