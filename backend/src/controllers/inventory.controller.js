@@ -24,6 +24,12 @@ const validateItemInput = ({ itemName, quantity, reorderThreshold }) => {
 const checkAndNotify = async (item) => {
   try {
     if (item.quantity <= item.reorderThreshold) {
+      const now = Date.now();
+      const fiveMinutes = 5 * 60 * 1000;
+      if (item.lastAlertSentAt && (now - new Date(item.lastAlertSentAt).getTime()) < fiveMinutes) {
+        return;
+      }
+
       await Alert.create({
         itemId: item._id,
         user: item.user,
@@ -38,6 +44,8 @@ const checkAndNotify = async (item) => {
           await sendLowStockAlert(user.email, item.itemName, item.quantity);
         }
       }
+    
+      await Item.updateOne({ _id: item._id }, { lastAlertSentAt: new Date() });
     }
   } catch (err) {
     console.error("Alert creation failed:", err);
