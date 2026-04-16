@@ -6,7 +6,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   const handleLogout = () => {
     localStorage.removeItem("invq_token");
     localStorage.removeItem("invq_user_name");
-    window.location.href = "/";
+    window.location.href = "/InvQ/";
   };
 
   const sidebarStyle = {
