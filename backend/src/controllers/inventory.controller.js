@@ -1,5 +1,7 @@
 const Item = require('../models/Item');
 const Alert = require('../models/Alert');
+const { sendLowStockAlert, sendOutOfStockAlert } = require('../utils/email');
+const User = require('../models/User');
 
 // VALIDATION
 const validateItemInput = ({ itemName, quantity, reorderThreshold }) => {
@@ -27,6 +29,15 @@ const checkAndNotify = async (item) => {
         user: item.user,
         message: `${item.itemName} is low on stock (${item.quantity})`
       });
+
+      const user = await User.findById(item.user);
+      if (user?.email) {
+        if (item.quantity === 0) {
+          await sendOutOfStockAlert(user.email, item.itemName);
+        } else {
+          await sendLowStockAlert(user.email, item.itemName, item.quantity);
+        }
+      }
     }
   } catch (err) {
     console.error("Alert creation failed:", err);
