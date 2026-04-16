@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AlertTriangle, PackageOpen, Package, RefreshCw } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const BRAND_DARK = "#083344";
 const RED_ALERT = "#EF4444";
@@ -154,7 +155,7 @@ export default function Alerts() {
 
                 <div style={{ display: "flex", gap: "10px", marginTop: "20px" }}>
                   <button
-                    onClick={() => window.location.href = "/inventory"}
+                    onClick={() => window.location.href = navigate("/inventory")}
                     style={{
                       flex: 1,
                       padding: "14px",
