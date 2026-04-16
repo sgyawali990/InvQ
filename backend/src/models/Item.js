@@ -15,6 +15,10 @@ const itemSchema = new mongoose.Schema(
       type: Number,
       default: 0
     },
+    lastAlertSentAt: {
+      type: Date,
+      default: null
+    },
     category: {
       type: String
     },
