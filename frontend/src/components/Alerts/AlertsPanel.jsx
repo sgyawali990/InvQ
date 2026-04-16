@@ -7,6 +7,7 @@ const RED_ALERT = "#EF4444";
 const ORANGE_WARN = "#F97316";
 
 export default function Alerts() {
+  const navigate = useNavigate();
   const [inventory, setInventory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
